@@ -26,12 +26,15 @@ int main() {
         cin >> newWorker.id >> newWorker.gender >> newWorker.totalPieces;
 
         int pieces = newWorker.totalPieces;
-        float *average = newWorker.gender == 'F'?
-            &femalePieces:
-            &malePieces;
-        float *genderCount = newWorker.gender == 'F'?
-            &femaleCount:
-            &maleCount;
+        bool isFemale = newWorker.gender == 'F';
+
+        if (isFemale) {
+            femaleCount++;
+            femalePieces += pieces;
+        } else {
+            maleCount++;
+            malePieces += pieces;
+        }
 
         if (pieces <= 30) {
             totalPayment += 1100;
